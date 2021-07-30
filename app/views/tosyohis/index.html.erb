@@ -1,0 +1,40 @@
+<div>
+<%= form_with  local: true do |form| %>
+  <select name = "user_id" >
+  <option value="">社員を選択して下さい</option>
+  <% User.all.each do |user| %>
+  <option value=<%=user.id%>><%= user.name %></option>
+  <% end %>
+  <select>
+  <%= form.submit '表示' %>   
+  <% end %> 
+ </div>
+
+ <div>
+ a
+ </div>
+
+
+  <%#= @user(params[:id]).each do |tosyohi| %> 
+  <%#<p><%= tosyohi.price</p> %> 
+  <%# <% end %> 
+
+  <%= form_with url:"/tosyohis",method: :post, local: true do |form| %> 
+  <%= form.text_field :price %>
+  <%= form.submit '投稿する'  %>
+  <% end %>
+
+<%= @aaa %>
+
+  <%= link_to "戻る", users_path %>
+
+
+<% @tosyohis.each do |tosyohi| %>
+  <div class="post-date">
+    投稿日時：<%= tosyohi.created_at %>
+  </div>
+  <div class="post-content">
+    <%= tosyohi.price %>
+  </div>
+<% end %> 
+
